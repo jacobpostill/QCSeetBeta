@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Seam = () => {
+function Seam () {
   const [seamSubmitted, setSeamSubmitted] = useState(false);
   const [isInfinity, setIsInfinity] = useState(false);
   const [explanation, setExplanation] = useState('');
