@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Shrink = () => {
+function Shrink () {
   const [time, setTime] = useState('');
   const [product, setProduct] = useState('');
   const [btl, setBtl] = useState('');
