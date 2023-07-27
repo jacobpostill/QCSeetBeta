@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Paperboard = () => {
+function Paperboard () {
   const [time, setTime] = useState('');
   const [product, setProduct] = useState('');
   const [prodDateCodeBTLForWraps, setProdDateCodeBTLForWraps] = useState('');
