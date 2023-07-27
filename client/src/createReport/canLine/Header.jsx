@@ -60,6 +60,38 @@ function Header() {
             <div className="border p-2">Calibration</div>
           </Link>
         </div>
+         <div className="col">
+          {/* Add the Shrink component */}
+          <Link to={`/canline/shrink/${reportId}`}>
+            <div className="border p-2">Shrink</div>
+          </Link>
+        </div>
+        <div className="col">
+          {/* Add the Seam component */}
+          <Link to={`/canline/seam/${reportId}`}>
+            <div className="border p-2">Seam</div>
+          </Link>
+        </div>
+        <div className="col">
+          {/* Add the Paperboard component */}
+          <Link to={`/canline/paperboard/${reportId}`}>
+            <div className="border p-2">Paperboard</div>
+          </Link>
+        </div>
+        <div className="col">
+          {/* Add the Runsheet component */}
+          <Link to={`/canline/runsheet/${reportId}`}>
+            <div className="border p-2">Runsheet</div>
+          </Link>
+        </div>
+        <div className="col">
+          {/* Add the BallCage component */}
+          <Link to={`/canline/ballcage/${reportId}`}>
+            <div className="border p-2">BallCage</div>
+          </Link>
+        </div>
+      </div>
+       
       </div>
     </div>
   );
