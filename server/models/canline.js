@@ -56,7 +56,8 @@ const shrinkWrapCan = new mongoose.Schema({
         unique: true     
     }, time: {
         type: String,
-        required: false     
+        required: false,
+        unique: false,     
     }, flavor: {
         type: String,
         required: false     
@@ -329,19 +330,25 @@ const depalCan = new mongoose.Schema({
         unique: true     
     }, canLine:{
         type: String,
-        required: false 
+        required: false,
+        unique: false     
     }, time: {
         type: String,
-        required: false     
+        required: false ,
+        unique: false        
     }, product: {
         type: String,
-        required: false     
+        required: false   ,
+        unique: false       
     }, lot: {
         type: String,
-        required: false     
-    }, initals: {
+        required: false    ,
+        unique: false      
+    }, initials: {
         type: String,
-        required: false     
+        required: false   ,
+        unique: false     
+  
     }, 
 })
 

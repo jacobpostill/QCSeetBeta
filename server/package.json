@@ -1,20 +1,24 @@
 {
-  "name": "server",
+  "name": "QCsheetBeta",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "node index",
+    "client": "cd client && npm run dev",
+    "server": "nodemon index --ignore client/",
+    "client-install":"cd client && npm install",
+    "server-install":"npm install",
+    "install-all": "concurrently \"npm run client-install\" \"npm run server-install\"",
+    "dev" : "concurrently \"npm run client\" \"npm run server\"",
+    "heroku-postbuild" : "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "mongoose": "^7.4.1",
-    "nodemon": "^3.0.1",
-    "shortid": "^2.2.16"
+    "express": "^4.17.1",
+    "mongoose": "^5.7.3"
   }
 }
