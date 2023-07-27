@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const RunSheet = () => {
+function RunSheet () {
   const [runSheetSubmitted, setRunSheetSubmitted] = useState(false);
   const [isInfinity, setIsInfinity] = useState(false);
   const [explanation, setExplanation] = useState('');
