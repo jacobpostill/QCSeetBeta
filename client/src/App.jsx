@@ -8,10 +8,12 @@ import SelectLine from './createReport/SelectLine'
 import Report from './viewReport/Report'
 import Depal from './createReport/canLine/depal'
 import Primary from './createReport/canLine/Primary'
-import CalibrationForm from './createReport/canLine/Calibration'
-
-
-
+import BallCage from './createReport/canLine/BallCage'
+import RunSheet from './createReport/canLine/RunSheet'
+import Paperboard from './createReport/canLine/Paperboard'
+import Seam from './createReport/canLine/Seam'
+import Shrink from './createReport/canLine/Shrink'
+import Rinser from './createReport/canLine/Rinser'
 
 function App() {
 
@@ -26,8 +28,12 @@ function App() {
         <Route path='/canline/depal/:id' element={<Depal/>}></Route>
         <Route path='/canline/primary/:id' element={<Primary/>}></Route>
         <Route path='/canline/calibration/:id' element={<CalibrationForm/>}></Route>
-
-
+        <Route path='/canline/BallCage/:id' element={<BallCage/>}></Route>
+        <Route path='/canline/RunSheet/:id' element={<RunSheet/>}></Route>
+        <Route path='/canline/Paperboard/:id' element={<Paperboard/>}></Route>
+        <Route path='/canline/Seam/:id' element={<Seam/>}></Route>
+        <Route path='/canline/Shrink/:id' element={<Shrink/>}></Route>
+        <Route path='/canline/Rinser/:id' element={<Rinser/>}></Route>
         </Routes>
     </BrowserRouter>
   )
