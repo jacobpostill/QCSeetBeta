@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const BallCage = () => {
+function BallCage () {
   const [time, setTime] = useState('');
   const [flavour, setFlavour] = useState('');
   const [frequencyOfCheck, setFrequencyOfCheck] = useState('');
