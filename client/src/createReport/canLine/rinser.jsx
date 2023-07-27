@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Rinser = () => {
+function Rinser () {
   const [time, setTime] = useState('');
   const [shift, setShift] = useState('');
   const [productCode, setProductCode] = useState('');
