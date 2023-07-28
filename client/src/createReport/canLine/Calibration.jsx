@@ -1,18 +1,22 @@
 import React from 'react';
+import Header from './Header';
 
 function CalibrationForm() {
   return (
     <div className="container mt-5">
+            <Header />
+
       <h1>Calibration Form</h1>
       <form id="calibrationForm">
         <div className="row">
           <div className="col-md-4">
-            <label htmlFor="id">ID:</label>
-            <input type="text" id="id" name="id" className="form-control" required />
-          </div>
-          <div className="col-md-4">
             <label htmlFor="ph1">pH1:</label>
-            <input type="number" id="ph1" name="ph1" className="form-control" />
+            {/* {entries.map((entry, index) => (
+              <div key={index} id={`colorList${index}`}>
+                {entry.ph1}
+              </div>
+            ))} */}
+            <input type="number" id="ph1" name="ph1" className="form-control" onChange={(e) => setPh1(e.target.value)}/>
           </div>
           <div className="col-md-4">
             <label htmlFor="ph2">pH2:</label>

@@ -42,7 +42,9 @@ function Header() {
       </div>
       <div className="row mt-3">
         <div className="col">
-          <div className="border p-2">Rinser</div>
+            <Link to={`/canline/rinser/${reportId}`}>
+                <div className="border p-2">Rinser</div>
+            </Link>
         </div>
         <div className="col">
           <Link to={`/canline/depal/${reportId}`}>
@@ -93,7 +95,6 @@ function Header() {
       </div>
        
       </div>
-    </div>
   );
 }
 

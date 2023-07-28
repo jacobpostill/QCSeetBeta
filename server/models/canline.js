@@ -17,10 +17,10 @@ const canLine = new mongoose.Schema({
     }, callibration: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'callibrationCan'
-    }], runSheet: {
-        type: Boolean,
-        required: false
-    }, depalCan: [{
+    }], runSheetCheck: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'runSheet'
+    }], depalCan: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'depalCan'
     }], rinser: [{
@@ -35,10 +35,10 @@ const canLine = new mongoose.Schema({
     }], ballCage: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'ballCageCan'
-    }], seam: {
-        type: Boolean,
-        required: false
-    }, primaryLot: [{
+    }], seam: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Seam'
+    }], primaryLot: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'primaryLotCan'
     }], paperboard: [{
@@ -50,6 +50,40 @@ const canLine = new mongoose.Schema({
     }],
 })
 
+
+const Seam = new mongoose.Schema({
+    id:{
+        type: String,
+        unique: true     
+    }, canLine:{
+        type: String,
+        unique: true,  
+    }, check: {
+        type: String,
+        unique: true  
+    }, comment: {
+        type: String,
+        unique: false,
+        required: false
+    }
+})
+
+const runSheet = new mongoose.Schema({
+    id:{
+        type: String,
+        unique: true     
+    }, canLine:{
+        type: String,
+        unique: true,  
+    }, check: {
+        type: String,
+        unique: true  
+    }, comment: {
+        type: String,
+        unique: false,
+        required: false
+    }
+})
 const shrinkWrapCan = new mongoose.Schema({
     id:{
         type: String,
@@ -271,7 +305,10 @@ const ballCageCan = new mongoose.Schema({
     id:{
         type: String,
         unique: true     
-    },  time: {
+    }, canLine:{
+        type: String,
+        required: false       
+    }, time: {
         type: String,
         required: false     
     }, flavor:{
@@ -281,10 +318,13 @@ const ballCageCan = new mongoose.Schema({
         type: String,
         required: false     
     }, tightness: {
-        type: Boolean,
+        type: String,
         required: false     
     }, inspection: {
-        type: Boolean,
+        type: String,
+        required: false     
+    }, initals: {
+        type: String,
         required: false     
     },
 })
@@ -316,7 +356,7 @@ const fitlecCan = new mongoose.Schema({
         type: String,
         required: false     
     }, filtecVer: {
-        type: Boolean,
+        type: String,
         required: false     
     }, initals: {
         type: String,
@@ -375,7 +415,7 @@ const rinserCan = new mongoose.Schema({
         type: String,
         required: false     
     }, operatiional: {
-        type: Boolean,
+        type: String,
         required: false     
     }, initals: {
         type: String,
@@ -383,13 +423,20 @@ const rinserCan = new mongoose.Schema({
     }, computer: {
         type: String,
         required: false     
+    }, readings: {
+        type: String,
+        required: false     
     }, 
 })
+
 const callibrationCan = new mongoose.Schema({
     id: {
         type: String,
         unique: true 
-    }, ph1: {
+    }, canLine:{
+        type: Number,
+        required: false
+    },  ph1: {
         type: Number,
         required: false
     }, ph2: {
@@ -609,6 +656,8 @@ const collection13 =  mongoose.model("ballCageCan", ballCageCan)
 const collection14 = mongoose.model("primaryLotCan", primaryLotCan)
 const collection15 = mongoose.model("paperboardCan", paperboardCan)
 const collection16 =  mongoose.model("shrinkWrapCan", shrinkWrapCan)
+const collection17 =  mongoose.model("runSheet", runSheet)
+const collection18 =  mongoose.model("Seam", Seam)
 
 module.exports = {
     canLine: collection2,
@@ -621,5 +670,7 @@ module.exports = {
     primaryLotCan: collection14,
     paperboardCan: collection15,
     shrinkWrapCan: collection16,
+    runSheet: collection17,
+    Seam: collection18,
   };
   

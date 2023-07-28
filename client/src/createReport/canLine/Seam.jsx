@@ -1,64 +1,100 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import Header from './Header';
 
-function Seam () {
-  const [seamSubmitted, setSeamSubmitted] = useState(false);
-  const [isInfinity, setIsInfinity] = useState(false);
-  const [explanation, setExplanation] = useState('');
-
-  const handleSeamSubmit = () => {
-    setSeamSubmitted(!seamSubmitted);
-  };
+function Seam() {
+  const [check, setCompletionStatus] = useState('completePrinted');
+  const [submitted, setSubmitted] = useState(false);
+  const [comment, setComment] = useState('');
 
   const handleCheckboxChange = (e) => {
-    const { name, checked } = e.target;
-    if (name === 'isInfinity') {
-      setIsInfinity(checked);
+    setCompletionStatus(e.target.value);
+    // If a checkbox is selected, clear the explanation
+    if (e.target.checked) {
+      setExplanation('');
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const reportId = window.location.pathname.split('/').pop();
+    console.log(reportId)
+    const reportData = {
+      check,
+      reportId,
+      comment,
+    };
+
+    axios
+      .post(`http://localhost:3001/canline/seamcheck/${reportId}`, reportData)
+      .then((response) => {
+        console.log(response.data);
+        setSubmitted(true);
+      })
+      .catch((error) => {
+        console.error('Error submitting form:', error);
+      });
+  };
+
   return (
-    <div>
-      <h3>Seam Submitted</h3>
-      <input
-        type="checkbox"
-        checked={seamSubmitted}
-        onChange={handleSeamSubmit}
-      />
-      {seamSubmitted && (
-        <div>
-          <label>
+    <div className="container">
+      <Header />
+      <h3>Run Sheet Submitted</h3>
+      {submitted ? (
+        <p>Report submitted</p>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <div className="form-check">
             <input
-              type="checkbox"
-              name="isInfinity"
-              checked={isInfinity}
+              className="form-check-input"
+              type="radio"
+              name="completionStatus"
+              value="completePrinted"
+              checked={check === 'completePrinted'}
               onChange={handleCheckboxChange}
             />
-            Infinity
-          </label>
-          <label>
+            <label className="form-check-label">Complete & Printed</label>
+          </div>
+          <div className="form-check">
             <input
-              type="checkbox"
-              name="isPaper"
-              checked={!isInfinity}
+              className="form-check-input"
+              type="radio"
+              name="completionStatus"
+              value="completeNotPrinted"
+              checked={check === 'completeNotPrinted'}
               onChange={handleCheckboxChange}
             />
-            Paper
-          </label>
-          {!isInfinity && (
-            <div>
-              <p>If paper, please explain why you did not use infinity:</p>
+            <label className="form-check-label">Complete but not Printed</label>
+          </div>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="completionStatus"
+              value="notCompletePrinted"
+              checked={check === 'notCompletePrinted'}
+              onChange={handleCheckboxChange}
+            />
+            <label className="form-check-label">Not Complete or Printed</label>
+          </div>
+          {(check === 'completeNotPrinted' || check === 'notCompletePrinted') && (
+            <div className="mb-3">
+              <label className="form-label">If complete & printed, please explain:</label>
               <input
+                className="form-control"
                 type="text"
-                value={explanation}
-                onChange={(e) => setExplanation(e.target.value)}
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
               />
             </div>
           )}
-        </div>
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </form>
       )}
     </div>
   );
-};
+}
 
 export default Seam;
-

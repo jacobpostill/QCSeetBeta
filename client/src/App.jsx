@@ -13,7 +13,8 @@ import RunSheet from './createReport/canLine/RunSheet'
 import Paperboard from './createReport/canLine/Paperboard'
 import Seam from './createReport/canLine/Seam'
 import Shrink from './createReport/canLine/Shrink'
-import Rinser from './createReport/canLine/Rinser'
+import Rinser from './createReport/canLine/rinser'
+import CalibrationForm from './createReport/canLine/Calibration'
 
 function App() {
 
