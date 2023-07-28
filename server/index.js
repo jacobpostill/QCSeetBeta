@@ -58,24 +58,47 @@ app.get("/selectLine", (req, res) => {
     }
   }); 
 
-app.post('/createCanLine', (req, res) => {
-    const { reportId, line, date, shift } = req.body;
-    
-    canLine.create({
-      id: reportId,
-      Line: line,
-      Date: date,
-      Shift: shift,
-    })
-    .then((createdCanLine) => {
-      const id = createdCanLine.id; // Assigning the id from the created canLine
-      const line = createdCanLine.Line; // Assigning the line from the created canLine
-      res.json({ id, line, message: "can line 1 create" });
-    })
-    .catch((err) => res.json(err));
-  });
+
+  app.get('/checkline', async (req, res) => {
+    const { line, date, shift } = req.query; // Use req.query instead of req.body
+
+    try {
+        const existingCanLine = await canLine.find({ Line: line }).exec();
+        console.log(existingCanLine);
+        res.json({ existingCanLine });
+    } catch (error) {
+        console.error('Error fetching depalCans:', error);
+        res.status(500).json({ message: 'Failed to fetch depalCans' });
+    }
+});
 
 
+  app.post('/createCanLine', (req, res) => {
+    const { line, date, shift } = req.body;
+    // Check if an entry with the same Line, Date, and Shift exists
+    canLine.findOne({ where: { Line: line, Date: date, Shift: shift } })
+        .then((existingCanLine) => {
+            if (existingCanLine) {
+                const id = existingCanLine.id; // Get the id from the existingCanLin
+                res.json({ message: `${id}` });
+            } else {
+                // If no existing entry is found, create a new one
+                canLine.create({
+                    id: reportId,
+                    Line: line,
+                    Date: date,
+                    Shift: shift,
+                })
+                .then((createdCanLine) => {
+                    const id = createdCanLine.id; // Get the id from the created canLine
+                    res.json({ id });
+                })
+                .catch((err) => res.json({ error: "Failed to create new entry" }));
+            }
+        })
+        .catch((err) => res.json({ error: "Database error" }));
+});
+  
   app.post('/canline/rinsercan/:reportId', async (req, res) => {
     const reportId = req.params.reportId;
     console.log(reportId);

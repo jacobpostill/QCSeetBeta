@@ -27,6 +27,9 @@ function Header() {
     <div className="container mt-4">
       <div className="row">
         <div className="col">
+        <Link to="/">
+            <button type="button" className="btn btn-primary">Home</button>
+          </Link>
         </div>
       </div>
       <div className="row mt-3">

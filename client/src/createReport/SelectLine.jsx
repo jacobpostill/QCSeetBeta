@@ -34,17 +34,27 @@ function SelectLine() {
     console.log(shift);
     console.log(route);
 
-    axios.post(route, { reportId, line, date, shift })
-      .then((response) => {
-        console.log('Received reportId:', response);
-        Navigate(`${linkto}${reportId}`)
 
-        // You can use the reportId to navigate to the appropriate page or display information as needed
-      })
+    axios.get('http://localhost:3001/checkline').then((response) => {
+      console.log(response);})
+      const data = response.data;
+      console.log(data)
       .catch((error) => {
         console.error('Error:', error);
       });
-  };
+  )};
+    // axios.post(route, { reportId, line, date, shift })
+    //   .then((response) => {
+    //     console.log(response);
+    //     Navigate(`${linkto}${reportId}`)
+
+    //     // You can use the reportId to navigate to the appropriate page or display information as needed
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error:', error);
+    //   });
+
+  
 
   return (
     <div className="container mt-5">

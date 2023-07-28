@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-
-function Shrink () {
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './Header'
+const Shrink = () => {
+  const [id, setId] = useState('');
   const [time, setTime] = useState('');
   const [flavor, setFlavor] = useState('');
   const [appearance1, setAppearance1] = useState('');
@@ -34,275 +36,412 @@ function Shrink () {
   const [firstLast, setFirstLast] = useState('');
   const [initials, setInitials] = useState('');
   const [comments, setComments] = useState('');
- 
+
+  // Helper function to handle checkbox click
+  const handleCheckboxClick = (field) => {
+    switch (field) {
+      case 'shrink':
+        setShrink1('P');
+        setShrink2('P');
+        setShrink3('P');
+        break;
+      case 'hicone':
+        setHicone1('P');
+        setHicone2('P');
+        setHicone3('P');
+        break;
+      case 'tray':
+        setTray1('P');
+        setTray2('P');
+        setTray3('P');
+        break;
+      case 'bonded':
+        setBonded1('P');
+        setBonded2('P');
+        setBonded3('P');
+        break;
+      case 'sealed':
+        setSealed1('P');
+        setSealed2('P');
+        setSealed3('P');
+        break;
+      case 'legable':
+        setLegable1('P');
+        setLegable2('P');
+        setLegable3('P');
+        break;
+      case 'burn':
+        setBurn1('P');
+        setBurn2('P');
+        setBurn3('P');
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
-      <div>
-        <input
-          type="text"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-          placeholder="Enter Time"
-        />
+    <div className="container mt-4">
+      <Header />
+      <div className="row mb-3">
+        <div className="col">
+          <input
+            type="text"
+            className="form-control"
+            value={id}
+            onChange={(e) => setId(e.target.value)}
+            placeholder="Enter ID"
+          />
+        </div>
+        <div className="col">
+          <input
+            type="text"
+            className="form-control"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+            placeholder="Enter Time"
+          />
+        </div>
+        <div className="col">
+          <input
+            type="text"
+            className="form-control"
+            value={flavor}
+            onChange={(e) => setFlavor(e.target.value)}
+            placeholder="Enter Flavor"
+          />
+        </div>
       </div>
-      <div>
-        <input
-          type="text"
-          value={flavor}
-          onChange={(e) => setFlavor(e.target.value)}
-          placeholder="Enter Flavor"
-        />
+      <div className="row mb-3">
+        <div className="col">
+          <input
+            type="text"
+            className="form-control"
+            value={appearance1}
+            onChange={(e) => setAppearance1(e.target.value)}
+            placeholder="Enter Appearance 1"
+          />
+        </div>
+        <div className="col">
+          <input
+            type="text"
+            className="form-control"
+            value={appearance2}
+            onChange={(e) => setAppearance2(e.target.value)}
+            placeholder="Enter Appearance 2"
+          />
+        </div>
+        <div className="col">
+          <input
+            type="text"
+            className="form-control"
+            value={appearance3}
+            onChange={(e) => setAppearance3(e.target.value)}
+            placeholder="Enter Appearance 3"
+          />
+        </div>
       </div>
-      <div>
-        <input
-          type="text"
-          value={appearance1}
-          onChange={(e) => setAppearance1(e.target.value)}
-          placeholder="Enter Appearance 1"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={appearance2}
-          onChange={(e) => setAppearance2(e.target.value)}
-          placeholder="Enter Appearance 2"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={appearance3}
-          onChange={(e) => setAppearance3(e.target.value)}
-          placeholder="Enter Appearance 3"
-        />
-           <div>
-      <div>
-        <input
-          type="text"
-          value={shrink1}
-          onChange={(e) => setShrink1(e.target.value)}
-          placeholder="Enter Shrink 1"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={shrink2}
-          onChange={(e) => setShrink2(e.target.value)}
-          placeholder="Enter Shrink 2"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={shrink3}
-          onChange={(e) => setShrink3(e.target.value)}
-          placeholder="Enter Shrink 3"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={hicone1}
-          onChange={(e) => setHicone1(e.target.value)}
-          placeholder="Enter Hicone 1"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={hicone2}
-          onChange={(e) => setHicone2(e.target.value)}
-          placeholder="Enter Hicone 2"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={hicone3}
-          onChange={(e) => setHicone3(e.target.value)}
-          placeholder="Enter Hicone 3"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={tray1}
-          onChange={(e) => setTray1(e.target.value)}
-          placeholder="Enter Tray 1"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={tray2}
-          onChange={(e) => setTray2(e.target.value)}
-          placeholder="Enter Tray 2"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={tray3}
-          onChange={(e) => setTray3(e.target.value)}
-          placeholder="Enter Tray 3"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={bonded1}
-          onChange={(e) => setBonded1(e.target.value)}
-          placeholder="Enter Bonded 1"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={bonded2}
-          onChange={(e) => setBonded2(e.target.value)}
-          placeholder="Enter Bonded 2"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={bonded3}
-          onChange={(e) => setBonded3(e.target.value)}
-          placeholder="Enter Bonded 3"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={sealed1}
-          onChange={(e) => setSealed1(e.target.value)}
-          placeholder="Enter Sealed 1"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={sealed2}
-          onChange={(e) => setSealed2(e.target.value)}
-          placeholder="Enter Sealed 2"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={sealed3}
-          onChange={(e) => setSealed3(e.target.value)}
-          placeholder="Enter Sealed 3"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={legable1}
-          onChange={(e) => setLegable1(e.target.value)}
-          placeholder="Enter Legable 1"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={legable2}
-          onChange={(e) => setLegable2(e.target.value)}
-          placeholder="Enter Legable 2"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={legable3}
-          onChange={(e) => setLegable3(e.target.value)}
-          placeholder="Enter Legable 3"
-        />
-      </div>
-      </div>
-            <div>
+      <div className="row mb-3">
+        <div className="col">
+          <h3>Shrink</h3>
+          <div className="form-check">
             <input
-              type="text"
-              value={burn1}
-              onChange={(e) => setBurn1(e.target.value)}
-              placeholder="Enter Burn 1"
+              type="checkbox"
+              className="form-check-input"
+              checked={shrink1 === 'P'}
+              onChange={() => handleCheckboxClick('shrink')}
             />
+            <label className="form-check-label">Shrink 1</label>
           </div>
-          <div>
+          <div className="form-check">
             <input
-              type="text"
-              value={burn2}
-              onChange={(e) => setBurn2(e.target.value)}
-              placeholder="Enter Burn 2"
+              type="checkbox"
+              className="form-check-input"
+              checked={shrink2 === 'P'}
+              onChange={() => handleCheckboxClick('shrink')}
             />
+            <label className="form-check-label">Shrink 2</label>
           </div>
-          <div>
+          <div className="form-check">
             <input
-              type="text"
-              value={burn3}
-              onChange={(e) => setBurn3(e.target.value)}
-              placeholder="Enter Burn 3"
+              type="checkbox"
+              className="form-check-input"
+              checked={shrink3 === 'P'}
+              onChange={() => handleCheckboxClick('shrink')}
             />
+            <label className="form-check-label">Shrink 3</label>
           </div>
-      <div>
-        <input
-          type="text"
-          value={btl}
-          onChange={(e) => setBtl(e.target.value)}
-          placeholder="Enter Btl"
-        />
+        </div>
+        <div className="row mb-3">
+        <div className="col">
+          <h3>Hicone</h3>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={hicone1 === 'P'}
+              onChange={() => handleCheckboxClick('hicone')}
+            />
+            <label className="form-check-label">Hicone 1</label>
+          </div>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={hicone2 === 'P'}
+              onChange={() => handleCheckboxClick('hicone')}
+            />
+            <label className="form-check-label">Hicone 2</label>
+          </div>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={hicone3 === 'P'}
+              onChange={() => handleCheckboxClick('hicone')}
+            />
+            <label className="form-check-label">Hicone 3</label>
+          </div>
+        </div>
       </div>
-      <div>
-        <input
-          type="text"
-          value={proDateCode}
-          onChange={(e) => setProDateCode(e.target.value)}
-          placeholder="Enter Pro Date Code"
-        />
+      <div className="row mb-3">
+        <div className="col">
+          <h3>Tray</h3>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={tray1 === 'P'}
+              onChange={() => handleCheckboxClick('tray')}
+            />
+            <label className="form-check-label">Tray 1</label>
+          </div>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={tray2 === 'P'}
+              onChange={() => handleCheckboxClick('tray')}
+            />
+            <label className="form-check-label">Tray 2</label>
+          </div>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={tray3 === 'P'}
+              onChange={() => handleCheckboxClick('tray')}
+            />
+            <label className="form-check-label">Tray 3</label>
+          </div>
+        </div>
       </div>
-      <div>
-        <input
-          type="checkbox"
-          checked={checks}
-          onChange={(e) => setChecks(e.target.checked)}
-        />
-        <label>Checks</label>
+      <div className="row mb-3">
+        <div className="col">
+          <h3>Bonded</h3>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={bonded1 === 'P'}
+              onChange={() => handleCheckboxClick('bonded')}
+            />
+            <label className="form-check-label">Bonded 1</label>
+          </div>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={bonded2 === 'P'}
+              onChange={() => handleCheckboxClick('bonded')}
+            />
+            <label className="form-check-label">Bonded 2</label>
+          </div>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={bonded3 === 'P'}
+              onChange={() => handleCheckboxClick('bonded')}
+            />
+            <label className="form-check-label">Bonded 3</label>
+          </div>
+        </div>
       </div>
-      <div>
-        <input
-          type="checkbox"
-          checked={lid}
-          onChange={(e) => setLid(e.target.checked)}
-        />
-        <label>Lid</label>
+      <div className="row mb-3">
+        <div className="col">
+          <h3>Sealed</h3>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={sealed1 === 'P'}
+              onChange={() => handleCheckboxClick('sealed')}
+            />
+            <label className="form-check-label">Sealed 1</label>
+          </div>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={sealed2 === 'P'}
+              onChange={() => handleCheckboxClick('sealed')}
+            />
+            <label className="form-check-label">Sealed 2</label>
+          </div>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={sealed3 === 'P'}
+              onChange={() => handleCheckboxClick('sealed')}
+            />
+            <label className="form-check-label">Sealed 3</label>
+          </div>
+        </div>
       </div>
-      <div>
-        <input
-          type="text"
-          value={firstLast}
-          onChange={(e) => setFirstLast(e.target.value)}
-          placeholder="Enter FirstLast"
-        />
+      <div className="row mb-3">
+        <div className="col">
+          <h3>Legable</h3>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={legable1 === 'P'}
+              onChange={() => handleCheckboxClick('legable')}
+            />
+            <label className="form-check-label">Legable 1</label>
+          </div>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={legable2 === 'P'}
+              onChange={() => handleCheckboxClick('legable')}
+            />
+            <label className="form-check-label">Legable 2</label>
+          </div>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={legable3 === 'P'}
+              onChange={() => handleCheckboxClick('legable')}
+            />
+            <label className="form-check-label">Legable 3</label>
+          </div>
+        </div>
       </div>
-      <div>
-        <input
-          type="text"
-          value={initials}
-          onChange={(e) => setInitials(e.target.value)}
-          placeholder="Enter Initials"
-        />
+      <div className="row mb-3">
+        <div className="col">
+          <h3>Burn</h3>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={burn1 === 'P'}
+              onChange={() => handleCheckboxClick('burn')}
+            />
+            <label className="form-check-label">Burn 1</label>
+          </div>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={burn2 === 'P'}
+              onChange={() => handleCheckboxClick('burn')}
+            />
+            <label className="form-check-label">Burn 2</label>
+          </div>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={burn3 === 'P'}
+              onChange={() => handleCheckboxClick('burn')}
+            />
+            <label className="form-check-label">Burn 3</label>
+          </div>
+        </div>
       </div>
-      <div>
-        <input
-          type="text"
-          value={comments}
-          onChange={(e) => setComments(e.target.value)}
-          placeholder="Enter Comments"
-        />
+      <div className="row mb-3">
+        <div className="col">
+          <input
+            type="text"
+            className="form-control"
+            value={btl}
+            onChange={(e) => setBtl(e.target.value)}
+            placeholder="Enter Btl"
+          />
+        </div>
+        <div className="col">
+          <input
+            type="text"
+            className="form-control"
+            value={proDateCode}
+            onChange={(e) => setProDateCode(e.target.value)}
+            placeholder="Enter Pro Date Code"
+          />
+        </div>
       </div>
-    </div>
+      <div className="row mb-3">
+        <div className="col">
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={checks}
+              onChange={(e) => setChecks(e.target.checked)}
+            />
+            <label className="form-check-label">Checks</label>
+          </div>
+        </div>
+        <div className="col">
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={lid}
+              onChange={(e) => setLid(e.target.checked)}
+            />
+            <label className="form-check-label">Lid</label>
+          </div>
+        </div>
+      </div>
+      <div className="row mb-3">
+        <div className="col">
+          <input
+            type="text"
+            className="form-control"
+            value={firstLast}
+            onChange={(e) => setFirstLast(e.target.value)}
+            placeholder="Enter FirstLast"
+          />
+        </div>
+        <div className="col">
+          <input
+            type="text"
+            className="form-control"
+            value={initials}
+            onChange={(e) => setInitials(e.target.value)}
+            placeholder="Enter Initials"
+          />
+        </div>
+      </div>
+      <div className="row mb-3">
+        <div className="col">
+          <input
+            type="text"
+            className="form-control"
+            value={comments}
+            onChange={(e) => setComments(e.target.value)}
+            placeholder="Enter Comments"
+          />
+        </div>
+      </div>
+      </div>
+      </div>
+
   );
 };
 
