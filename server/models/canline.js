@@ -96,76 +96,76 @@ const shrinkWrapCan = new mongoose.Schema({
         type: String,
         required: false     
     }, appearance1: {
-        type: Boolean,
+        type: String,
         required: false     
     }, appearance2: {
-        type: Boolean,
+        type: String,
         required: false     
     }, appearance3: {
-        type: Boolean,
+        type: String,
         required: false     
     }, shrink1: {
-        type: Boolean,
+        type: String,
         required: false     
     }, shrink2: {
-        type: Boolean,
+        type: String,
         required: false     
     }, shrink3: {
-        type: Boolean,
+        type: String,
         required: false     
     }, hicone1: {
-        type: Boolean,
+        type: String,
         required: false     
     }, hicone2: {
-        type: Boolean,
+        type: String,
         required: false     
     }, hicone3: {
-        type: Boolean,
+        type: String,
         required: false     
     }, tray1: {
-        type: Boolean,
+        type: String,
         required: false     
     }, tray2: {
-        type: Boolean,
+        type: String,
         required: false     
     }, tray3: {
-        type: Boolean,
+        type: String,
         required: false     
     }, bonded1: {
-        type: Boolean,
+        type: String,
         required: false     
     }, bonded2: {
-        type: Boolean,
+        type: String,
         required: false     
     }, bonded3: {
-        type: Boolean,
+        type: String,
         required: false     
     }, sealed1: {
-        type: Boolean,
+        type: String,
         required: false     
     }, sealed2: {
-        type: Boolean,
+        type: String,
         required: false     
     }, sealed3: {
-        type: Boolean,
+        type: String,
         required: false     
     }, legable1: {
-        type: Boolean,
+        type: String,
         required: false     
     }, legable2: {
-        type: Boolean,
+        type: String,
         required: false     
     }, legable3: {
-        type: Boolean,
+        type: String,
         required: false     
     }, burn1: {
-        type: Boolean,
+        type: String,
         required: false     
     }, burn2: {
-        type: Boolean,
+        type: String,
         required: false     
     }, burn3: {
-        type: Boolean,
+        type: String,
         required: false     
     }, btl: {
         type: String,
