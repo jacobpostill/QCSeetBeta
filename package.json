@@ -1,5 +1,5 @@
 {
-  "name": "your-app-name",
+  "name": "qcsheetbeta",
   "version": "1.0.0",
   "description": "Your app description",
   "main": "server/index.js",
@@ -23,7 +23,17 @@
   "devDependencies": {
     "concurrently": "^8.2.0",
     "nodemon": "^3.0.1",
-      "vite": "^4.4.5"
-    
-  }
+    "vite": "^4.4.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacobpostill/QCSeetBeta.git"
+  },
+  "keywords": [
+    "heroku"
+  ],
+  "bugs": {
+    "url": "https://github.com/jacobpostill/QCSeetBeta/issues"
+  },
+  "homepage": "https://github.com/jacobpostill/QCSeetBeta#readme"
 }
