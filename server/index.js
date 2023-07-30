@@ -58,47 +58,61 @@ app.get("/selectLine", (req, res) => {
     }
   }); 
 
-
-  app.get('/checkline', async (req, res) => {
-    const { line, date, shift } = req.query; // Use req.query instead of req.body
+  app.get('/canLineHeader/:reportId', async (req, res) => {
+    const reportId = req.params.reportId;
 
     try {
-        const existingCanLine = await canLine.find({ Line: line }).exec();
-        console.log(existingCanLine);
-        res.json({ existingCanLine });
+      const CanLine = await canLine.findOne({ id: reportId }).exec();
+  
+      console.log(CanLine)
+      res.json({ CanLine });
     } catch (error) {
-        console.error('Error fetching depalCans:', error);
-        res.status(500).json({ message: 'Failed to fetch depalCans' });
+      console.error('Error fetching cans:', error);
+      res.status(500).json({ message: 'Failed to fetch cans' });
     }
-});
+  });
 
+  app.get('/viewCan/findCan/:line/:shift/:date', async (req, res) => {
+    const line = req.params.line;
+    const shift = req.params.shift;
+    const date = req.params.date
+    console.log(line)
+    console.log(shift)
+
+    try {
+      const CanLine = await canLine.findOne({ Line: line, Shift: shift, Date: date }).exec();
+  
+      if (CanLine) {
+        console.log(CanLine);
+        res.json(CanLine);
+      } else {
+        // If CanLine is null, respond with a message indicating no previous entries
+        res.json({ message: 'No previous entries' });
+      }
+    } catch (error) {
+      console.error('Error fetching cans:', error);
+      res.status(500).json({ message: 'Failed to fetch cans' });
+    }
+  });
 
   app.post('/createCanLine', (req, res) => {
-    const { line, date, shift } = req.body;
-    // Check if an entry with the same Line, Date, and Shift exists
-    canLine.findOne({ where: { Line: line, Date: date, Shift: shift } })
-        .then((existingCanLine) => {
-            if (existingCanLine) {
-                const id = existingCanLine.id; // Get the id from the existingCanLin
-                res.json({ message: `${id}` });
-            } else {
-                // If no existing entry is found, create a new one
-                canLine.create({
-                    id: reportId,
-                    Line: line,
-                    Date: date,
-                    Shift: shift,
-                })
-                .then((createdCanLine) => {
-                    const id = createdCanLine.id; // Get the id from the created canLine
-                    res.json({ id });
-                })
-                .catch((err) => res.json({ error: "Failed to create new entry" }));
-            }
-        })
-        .catch((err) => res.json({ error: "Database error" }));
-});
+    const { reportId, line, date, shift } = req.body;
+
+    canLine.create({
+      id: reportId,
+      Line: line,
+      Date: date,
+      Shift: shift,
+    })
+    .then((createdCanLine) => {
+      const id = createdCanLine.id; // Assigning the id from the created canLine
+      const line = createdCanLine.Line; // Assigning the line from the created canLine
+      res.json({ id, line, message: "can line 1 create" });
+    })
+    .catch((err) => res.json(err));
+  });
   
+
   app.post('/canline/rinsercan/:reportId', async (req, res) => {
     const reportId = req.params.reportId;
     console.log(reportId);

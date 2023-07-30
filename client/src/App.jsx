@@ -15,6 +15,11 @@ import Seam from './createReport/canLine/Seam'
 import Shrink from './createReport/canLine/Shrink'
 import Rinser from './createReport/canLine/rinser'
 import CalibrationForm from './createReport/canLine/Calibration'
+import ViewDepal from './viewReport/canLine/depal'
+import PrimaryView from './viewReport/canLine/PrimaryView'
+import RinserView from './viewReport/canLine/rinserView'
+import BallCageView from './viewReport/canLine/BallCageView'
+
 
 function App() {
 
@@ -35,6 +40,11 @@ function App() {
         <Route path='/canline/Seam/:id' element={<Seam/>}></Route>
         <Route path='/canline/Shrink/:id' element={<Shrink/>}></Route>
         <Route path='/canline/Rinser/:id' element={<Rinser/>}></Route>
+        <Route path='/report/depal/:id' element={<ViewDepal/>}></Route>
+        <Route path='/report/primary/:id' element={<PrimaryView/>}></Route>
+        <Route path='/report/rinser/:id' element={<RinserView/>}></Route>
+        <Route path='/report/BallCage/:id' element={<BallCageView/>}></Route>
+
         </Routes>
     </BrowserRouter>
   )

@@ -50,7 +50,7 @@ function Header() {
             </Link>
         </div>
         <div className="col">
-          <Link to={`/canline/depal/${reportId}`}>
+          <Link to={`/report/depal/${reportId}`}>
             <div className="border p-2">Depal</div>
           </Link>
         </div>

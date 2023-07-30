@@ -7,7 +7,6 @@ function SelectLine() {
   const [line, setLine] = useState('');
   const [date, setDate] = useState('');
   const [shift, setShift] = useState('');
-  const Navigate = useNavigate()
 
   let route;
   let linkto
@@ -24,6 +23,7 @@ function SelectLine() {
   } else if (line === '7') {
     route = '/createVarReport';
   }
+  const navigate = useNavigate();
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -34,28 +34,40 @@ function SelectLine() {
     console.log(shift);
     console.log(route);
 
-
-    axios.get('http://localhost:3001/checkline').then((response) => {
-      console.log(response);})
-      const data = response.data;
-      console.log(data)
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  )};
-    // axios.post(route, { reportId, line, date, shift })
-    //   .then((response) => {
-    //     console.log(response);
-    //     Navigate(`${linkto}${reportId}`)
-
-    //     // You can use the reportId to navigate to the appropriate page or display information as needed
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error:', error);
-    //   });
-
+    const runPostRequest = (reportId) => {
+      axios
+        .post(route, { reportId, line, date, shift })
+        .then((response) => {
+          console.log(response);
+          navigate(`${linkto}${reportId}`);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    };
+    
+    axios
+    .get(`http://localhost:3001/viewCan/findCan/${line}/${shift}/${date}`)
+    .then((response) => {
+      const CanLine = response.data; // The CanLine data returned from the server
+      console.log(CanLine.id)
+      if (CanLine.id !== undefined) {
+        // CanLine is not null, navigate to the appropriate page
+        console.log('CanLine id:', CanLine.id);
+        navigate(`/report/depal/${CanLine.id}`);
+      } else {
+        // CanLine is null, log and run the POST request
+        console.log("not there");
+        runPostRequest(reportId);
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+};
   
-
+  
+  
   return (
     <div className="container mt-5">
       <form onSubmit={handleFormSubmit}>
@@ -143,7 +155,7 @@ function SelectLine() {
       </form>
       <div id="reportData" className="mt-3"></div> {/* Element to display the fetched data */}
     </div>
-  );
+  )
 }
 
 export default SelectLine;

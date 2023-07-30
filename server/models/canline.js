@@ -6,14 +6,14 @@ const canLine = new mongoose.Schema({
         type: String,
         unique: true
     }, Line: {
-        type: Number,
-        required: true
+        type: String,
+        required: false
     }, Date: {
-        type: Date,
-        required: true
+        type: String,
+        required: false
     }, Shift: {
         type: String,
-        required: true
+        required: false
     }, callibration: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'callibrationCan'

@@ -7,38 +7,21 @@ function Report() {
   const [line, setLine] = useState('');
   const [date, setDate] = useState('');
   const [shift, setShift] = useState('');
-  const Navigate = useNavigate()
-
-  let route;
-  let linkto
-
-  if (line === '1' || line === '2') {
-    route = 'http://localhost:3001/createCanLine';
-    linkto = `/canLine/Depal/`;
-  } else if (line === '3' || line === '5') {
-    route = '/createBottleReport';
-  } else if (line === '4') {
-    route = '/createGatoradeReport';
-  } else if (line === '6') {
-    route = '/createBIBReport';
-  } else if (line === '7') {
-    route = '/createVarReport';
-  }
+  const navigate = useNavigate();
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const reportId = shortid.generate();
-    console.log(reportId);
     console.log(line);
     console.log(date);
     console.log(shift);
-    console.log(route);
 
-    axios.post(route, { reportId, line, date, shift })
-      .then((response) => {
-        console.log('Received reportId:', response);
-        Navigate(`${linkto}${reportId}`)
 
+    axios.get(`http://localhost:3001/viewCan/findCan/${line}/${shift}/${date}` )
+    .then((response) => {
+      const CanLine = response.data; // The CanLine data returned from the server
+      console.log('CanLine id:', CanLine.id);
+      navigate(`/report/depal/${CanLine.id}`)
+      
         // You can use the reportId to navigate to the appropriate page or display information as needed
       })
       .catch((error) => {
