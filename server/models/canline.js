@@ -95,79 +95,31 @@ const shrinkWrapCan = new mongoose.Schema({
     }, flavor: {
         type: String,
         required: false     
-    }, appearance1: {
+    }, appearance: [{
         type: String,
         required: false     
-    }, appearance2: {
+    }], shrink: [{
         type: String,
         required: false     
-    }, appearance3: {
+    }], hicone: [{
         type: String,
         required: false     
-    }, shrink1: {
+    }], tray: [{
         type: String,
         required: false     
-    }, shrink2: {
+    }], bonded: [{
         type: String,
         required: false     
-    }, shrink3: {
+    }], sealed: [{
         type: String,
         required: false     
-    }, hicone1: {
+    }], legable: [{
         type: String,
         required: false     
-    }, hicone2: {
+    }], burn: [{
         type: String,
         required: false     
-    }, hicone3: {
-        type: String,
-        required: false     
-    }, tray1: {
-        type: String,
-        required: false     
-    }, tray2: {
-        type: String,
-        required: false     
-    }, tray3: {
-        type: String,
-        required: false     
-    }, bonded1: {
-        type: String,
-        required: false     
-    }, bonded2: {
-        type: String,
-        required: false     
-    }, bonded3: {
-        type: String,
-        required: false     
-    }, sealed1: {
-        type: String,
-        required: false     
-    }, sealed2: {
-        type: String,
-        required: false     
-    }, sealed3: {
-        type: String,
-        required: false     
-    }, legable1: {
-        type: String,
-        required: false     
-    }, legable2: {
-        type: String,
-        required: false     
-    }, legable3: {
-        type: String,
-        required: false     
-    }, burn1: {
-        type: String,
-        required: false     
-    }, burn2: {
-        type: String,
-        required: false     
-    }, burn3: {
-        type: String,
-        required: false     
-    }, btl: {
+    }], btl: {
         type: String,
         required: false     
     }, proDateCode: {
@@ -182,7 +134,7 @@ const shrinkWrapCan = new mongoose.Schema({
     }, firstLast: {
         type: String,
         required: false     
-    }, initals: {
+    },       initals: {
         type: String,
         required: false     
     }, comments: {
@@ -201,52 +153,22 @@ const paperboardCan = new mongoose.Schema({
     }, flavor: {
         type: String,
         required: false     
-    }, flap1: {
+    }, flap: [{
         type: Boolean,
         required: false     
-    }, flap2: {
+    }], perforation: [{
         type: Boolean,
         required: false     
-    }, flap3: {
+    }], fiberperforation: [{
         type: Boolean,
         required: false     
-    }, perforation1: {
+    }], fiberplain: [{
         type: Boolean,
         required: false     
-    }, perforation2: {
+    }], fiberSeam: [{
         type: Boolean,
         required: false     
-    }, perforation3: {
-        type: Boolean,
-        required: false     
-    }, fiberperforation1: {
-        type: Boolean,
-        required: false     
-    }, fiberperforation2: {
-        type: Boolean,
-        required: false     
-    }, fiberperforation3: {
-        type: Boolean,
-        required: false     
-    }, fiberplain1: {
-        type: Boolean,
-        required: false     
-    }, fiberplain2: {
-        type: Boolean,
-        required: false     
-    }, fiberplain3: {
-        type: Boolean,
-        required: false     
-    }, fiberSeam1: {
-        type: Boolean,
-        required: false     
-    }, fiberSeam2: {
-        type: Boolean,
-        required: false     
-    }, fiberSeam3: {
-        type: Boolean,
-        required: false     
-    }, wrap: {
+    }], wrap: m,  {
         type: Boolean,
         required: false     
     }, proDateWrap: {
